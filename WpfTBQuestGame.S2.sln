@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28010.2016
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WpfTBQuestGame.S2", "WpfTBQuestGame.S2\WpfTBQuestGame.S2.csproj", "{B9A17E96-4DFF-42FB-9C7F-9B859F1AC806}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{B9A17E96-4DFF-42FB-9C7F-9B859F1AC806}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B9A17E96-4DFF-42FB-9C7F-9B859F1AC806}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B9A17E96-4DFF-42FB-9C7F-9B859F1AC806}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B9A17E96-4DFF-42FB-9C7F-9B859F1AC806}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {3F6D171F-ACF1-4B8E-B792-7E1162752E2D}
+	EndGlobalSection
+EndGlobal
