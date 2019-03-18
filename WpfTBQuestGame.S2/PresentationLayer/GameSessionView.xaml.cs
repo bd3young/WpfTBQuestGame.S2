@@ -18,10 +18,14 @@ namespace WpfTBQuestGame.S2.PresentationLayer
     /// Interaction logic for GameSessionView.xaml
     /// </summary>
     public partial class GameSessionView : Window
-    {
-        public GameSessionView()
-        {
-            InitializeComponent();
-        }
-    }
+	{
+
+		GameSessionViewModel _gameSessionViewModel;
+
+		public GameSessionView(GameSessionViewModel gameSessionViewModel)
+		{
+			_gameSessionViewModel = gameSessionViewModel;
+			InitializeComponent();
+		}
+	}
 }
