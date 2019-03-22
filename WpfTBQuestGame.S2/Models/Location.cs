@@ -15,12 +15,15 @@ namespace WpfTBQuestGame.S2.Models
         private string _description;
         private bool _accessible;
         private int _modifyExp;
+		private int _modifyHealth;
+		private int _modifyLives;
+		private int _modifyTraveled;
 
-        #endregion
+		#endregion
 
-        #region PROPERTIES
+		#region PROPERTIES
 
-        public int Id
+		public int Id
         {
             get { return _id; }
             set { _id = value; }
@@ -50,14 +53,32 @@ namespace WpfTBQuestGame.S2.Models
             set { _accessible = value; }
         }
 
-        #endregion
+		public int ModifyLives
+		{
+			get { return _modifyLives; }
+			set { _modifyLives = value; }
+		}
 
-        #region METHODS
+		public int ModifyHealth
+		{
+			get { return _modifyHealth; }
+			set { _modifyHealth = value; }
+		}
 
-        #endregion
+		public int ModifyTraveled
+		{
+			get { return _modifyTraveled; }
+			set { _modifyTraveled = value; }
+		}
 
-        #region CONSTRUCTORS
+		#endregion
 
-        #endregion
-    }
+		#region METHODS
+
+		#endregion
+
+		#region CONSTRUCTORS
+
+		#endregion
+	}
 }

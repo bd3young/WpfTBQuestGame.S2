@@ -10,6 +10,7 @@
         Width="800"
         Background="SaddleBrown">
     <Window.Resources>
+        <BooleanToVisibilityConverter x:Key="BooleanToVisibility"/>
         <Style x:Key="BorderStyle" TargetType="Border">
             <Setter Property="BorderBrush" Value="PowderBlue"/>
             <Setter Property="BorderThickness" Value="2"/>
@@ -30,8 +31,10 @@
             <Setter Property="Margin" Value="5"/>
         </Style>
         <Style x:Key="MainButtonStyle" TargetType="Button">
-            <Setter Property="Height" Value="30"/>
+            <Setter Property="Height" Value="25"/>
             <Setter Property="Width" Value="70"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="HorizontalAlignment" Value="Center"/>
         </Style>
     </Window.Resources>
     <Grid>
@@ -108,32 +111,46 @@
                                 TextWrapping="Wrap"
                                 Text="{Binding CurrentLocation.Description}"
                                 Style="{StaticResource MainPanelTextBoxStyle}"/>
-                            <Grid>
+                            <Grid
+                                Height="70">
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="1*"/>
                                     <ColumnDefinition Width="1*"/>
                                     <ColumnDefinition Width="1*"/>
                                 </Grid.ColumnDefinitions>
-                                <StackPanel
-                                    Grid.Column="1">
-                                    <Button   
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="1*"/>
+                                    <RowDefinition Height="1*"/>
+                                    <RowDefinition Height="1*"/>
+                                </Grid.RowDefinitions>
+                                <Button   
                                     Content="North"
-                                    Style="{StaticResource MainButtonStyle}"/>
-                                    <Button
+                                    Grid.Column="1"
+                                    Grid.Row="0"
+                                    Style="{StaticResource MainButtonStyle}" 
+                                    Visibility="{Binding HasNorthLocation, Converter={StaticResource BooleanToVisibility}}"
+                                    Click="NorthButton_Click"/>
+                                <Button
                                     Content="South"
-                                    Margin="8"
-                                    Style="{StaticResource MainButtonStyle}"/>
-                                </StackPanel>
+                                    Grid.Column="1"
+                                    Grid.Row="2"
+                                    Style="{StaticResource MainButtonStyle}"
+                                    Visibility="{Binding HasSouthLocation, Converter={StaticResource BooleanToVisibility}}"
+                                    Click="SouthButton_Click"/>
                                 <Button
                                     Content="West"
-                                    HorizontalAlignment="Right"
                                     Grid.Column="0"
-                                    Style="{StaticResource MainButtonStyle}"/>
+                                    Grid.Row="1"
+                                    Style="{StaticResource MainButtonStyle}" 
+                                    Visibility="{Binding HasWestLocation, Converter={StaticResource BooleanToVisibility}}"
+                                    Click="WestButton_Click"/>
                                 <Button
                                     Content="East"
-                                    HorizontalAlignment="Left"
                                     Grid.Column="3"
-                                    Style="{StaticResource MainButtonStyle}"/>
+                                    Grid.Row="1"
+                                    Style="{StaticResource MainButtonStyle}"
+                                    Visibility="{Binding HasEastLocation, Converter={StaticResource BooleanToVisibility}}"
+                                    Click="EastButton_Click"/>
                                 <!--<ListBox Width="300" Margin="10"
                                 ItemsSource="{Binding AccesibleLocations}"
                                 SelectedItem="{Binding CurrentLocationName}">
@@ -191,7 +208,28 @@
                             <Label Content="Player Stats"
                             VerticalAlignment="Top"
                             HorizontalAlignment="Center"/>
+                            <StackPanel
+                                Orientation="Horizontal">
+                                <TextBox Text="{Binding Player.Health}" Style="{StaticResource MainPanelTextBoxStyle}"/>
+                                <Label Content="Health" Style="{StaticResource MainPanelLabelStyle}"/>
+                            </StackPanel>
+                            <StackPanel
+                                Orientation="Horizontal">
+                                <TextBox Text="{Binding Player.Exp}" Style="{StaticResource MainPanelTextBoxStyle}"/>
+                                <Label Content="EXP" Style="{StaticResource MainPanelLabelStyle}"/>
+                            </StackPanel>
+                            <StackPanel
+                                Orientation="Horizontal">
+                                <TextBox Text="{Binding Player.Lives}" Style="{StaticResource MainPanelTextBoxStyle}"/>
+                                <Label Content="Lives" Style="{StaticResource MainPanelLabelStyle}"/>
+                            </StackPanel>
+                            <StackPanel
+                                Orientation="Horizontal">
+                                <TextBox Text="{Binding Player.Traveled}" Style="{StaticResource MainPanelTextBoxStyle}"/>
+                                <Label Content="Traveled" Style="{StaticResource MainPanelLabelStyle}"/>
+                            </StackPanel>
                         </StackPanel>
+                        
                     </Border>
                 </StackPanel>
 

@@ -25,12 +25,17 @@ namespace WpfTBQuestGame.S2.Models
         protected int _health;
         private int _exp;
         private JobTitleName _jobTitle;
+		private List<Location> _locationsVisited;
+		private int _traveled;
 
-        #endregion
 
-        #region PROPERTIES
 
-        public int Lives
+
+		#endregion
+
+		#region PROPERTIES
+
+		public int Lives
         {
             get { return _lives; }
             set { _lives = value; }
@@ -45,7 +50,11 @@ namespace WpfTBQuestGame.S2.Models
         public int Exp
         {
             get { return _exp; }
-            set { _exp = value; }
+            set
+			{
+				_exp = value;
+				OnPropertyChanged(nameof(Exp));
+			}
         }
 
         public JobTitleName JobTitle
@@ -54,16 +63,40 @@ namespace WpfTBQuestGame.S2.Models
             set { _jobTitle = value; }
         }
 
+		public List<Location> LocationsVisited
+		{
+			get { return _locationsVisited; }
+			set { _locationsVisited = value; }
+		}
 
+		public int Traveled
+		{
+			get { return _traveled; }
+			set
+			{
+				_traveled = value;
+				OnPropertyChanged(nameof(Traveled));
+			}
+		}
 
-        #endregion
+		#endregion
 
-        #region METHODS
+		#region METHODS
 
-        #endregion
+		public Player()
+		{
+			_locationsVisited = new List<Location>();
+		}
 
-        #region CONSTRUCTORS
+		public bool HasVisited(Location location)
+		{
+			return _locationsVisited.Contains(location);
+		}
 
-        #endregion
-    }
+		#endregion
+
+		#region CONSTRUCTORS
+
+		#endregion
+	}
 }

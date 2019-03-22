@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace WpfTBQuestGame.S2.Models
 {
-    public class Character
+    public class Character : ObservableObject
     {
 
         #region ENUM

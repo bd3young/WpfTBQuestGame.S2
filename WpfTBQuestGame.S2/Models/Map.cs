@@ -83,11 +83,119 @@ namespace WpfTBQuestGame.S2.Models
             }
         }
 
-        #endregion
+		//
+		// get the north location if it exists
+		//
+		public Location NorthLocation(Player player)
+		{
+			Location northLocation = null;
 
-        #region CONSTRUCTORS
+			//
+			// not on north border
+			//
+			if (_currentLocationCoordinates.Row > 0)
+			{
+				Location nextNorthLocation = _mapLocations[_currentLocationCoordinates.Row - 1, _currentLocationCoordinates.Column];
 
-        public Map(int rows, int columns)
+				//
+				// location exists and player can access location
+				//
+				if (nextNorthLocation != null &&
+					(nextNorthLocation.Accessible == true))
+				{
+					northLocation = nextNorthLocation;
+				}
+			}
+
+			return northLocation;
+		}
+
+		//
+		// get the east location if it exists
+		//
+		public Location EastLocation(Player player)
+		{
+			Location eastLocation = null;
+
+			//
+			// not on east border
+			//
+			if (_currentLocationCoordinates.Column < _maxColumns - 1)
+			{
+				Location nextEastLocation = _mapLocations[_currentLocationCoordinates.Row, _currentLocationCoordinates.Column + 1];
+
+				//
+				// location exists and player can access location
+				//
+				if (nextEastLocation != null &&
+					(nextEastLocation.Accessible == true))
+				{
+					eastLocation = nextEastLocation;
+				}
+			}
+
+			return eastLocation;
+		}
+
+		//
+		// get the south location if it exists
+		//
+		public Location SouthLocation(Player player)
+		{
+			Location southLocation = null;
+
+			//
+			// not on south border
+			//
+			if (_currentLocationCoordinates.Row < _maxRows - 1)
+			{
+				Location nextSouthLocation = _mapLocations[_currentLocationCoordinates.Row + 1, _currentLocationCoordinates.Column];
+
+				//
+				// location exists and player can access location
+				//
+				if (nextSouthLocation != null &&
+					(nextSouthLocation.Accessible == true))
+				{
+					southLocation = nextSouthLocation;
+				}
+			}
+
+			return southLocation;
+		}
+
+		//
+		// get the west location if it exists
+		//
+		public Location WestLocation(Player player)
+		{
+			Location westLocation = null;
+
+			//
+			// not on west border
+			//
+			if (_currentLocationCoordinates.Column > 0)
+			{
+				Location nextWestLocation = _mapLocations[_currentLocationCoordinates.Row, _currentLocationCoordinates.Column - 1];
+
+				//
+				// location exists and player can access location
+				//
+				if (nextWestLocation != null &&
+					(nextWestLocation.Accessible == true))
+				{
+					westLocation = nextWestLocation;
+				}
+			}
+
+			return westLocation;
+		}
+
+		#endregion
+
+		#region CONSTRUCTORS
+
+		public Map(int rows, int columns)
         {
             _maxRows = rows;
             _maxColumns = columns;

@@ -21,7 +21,8 @@ namespace WpfTBQuestGame.S2.DataLayer
                 Health = 100,
                 Lives = 3,
                 Exp = 0,
-                LocationId = 0
+                LocationId = 0,
+				Traveled = 0
             };
         }
         public static List<string> InitialMessages()
@@ -57,7 +58,8 @@ namespace WpfTBQuestGame.S2.DataLayer
                 Name = "Kelime Island",
                 Description = "Island witht he Navy Headquarters on it",
                 Accessible = true,
-                //ModifiyExperiencePoints = 10
+                ModifyExp = 10,
+				ModifyTraveled = 1
             };
             gameMap.MapLocations[0, 1] = new Location()
             {
@@ -65,7 +67,8 @@ namespace WpfTBQuestGame.S2.DataLayer
                 Name = "Jenun Island",
                 Description = "Caves",
                 Accessible = true,
-                //ModifiyExperiencePoints = 10
+                ModifyExp = 10,
+				ModifyTraveled = 1
             };
 
             //
@@ -78,18 +81,20 @@ namespace WpfTBQuestGame.S2.DataLayer
                 Description = "The Island you washed ashore on is home to a couple villages." +
                 "The inhabitants of the island are curious of where you came from.",
                 Accessible = true,
-                //ModifiyExperiencePoints = 10
-            };
+                ModifyExp = 10,
+				ModifyTraveled = 1
+			};
             gameMap.MapLocations[1, 2] = new Location()
             {
                 Id = 2,
                 Name = "Neaver Island",
                 Description = "Volcano in the center",
-                Accessible = false,
-                //ModifiyExperiencePoints = 50,
-                //ModifyLives = -1,
-                //RequiredExperiencePoints = 40
-            };
+                Accessible = true,
+                ModifyExp = 10,
+				ModifyTraveled = 1
+				//ModifyLives = -1,
+				//RequiredExperiencePoints = 40
+			};
 
             //
             // row 3
@@ -99,11 +104,12 @@ namespace WpfTBQuestGame.S2.DataLayer
                 Id = 3,
                 Name = "Pellow Island",
                 Description = "Frozen Island",
-                Accessible = false,
-                //ModifiyExperiencePoints = 20,
-                //ModifyHealth = 50,
-                //Message = "Traveler, our telemetry places you at the Xantoria Market. We have reports of local health potions."
-            };
+                Accessible = true,
+                ModifyExp = 10,
+				ModifyTraveled = 1
+				//ModifyHealth = 50,
+				//Message = "Traveler, our telemetry places you at the Xantoria Market. We have reports of local health potions."
+			};
 
             return gameMap;
         }

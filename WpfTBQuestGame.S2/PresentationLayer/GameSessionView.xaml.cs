@@ -27,5 +27,24 @@ namespace WpfTBQuestGame.S2.PresentationLayer
 			_gameSessionViewModel = gameSessionViewModel;
 			InitializeComponent();
 		}
+
+		private void NorthButton_Click(object sender, RoutedEventArgs e)
+		{
+			_gameSessionViewModel.MoveNorth();
+		}
+
+		private void SouthButton_Click(object sender, RoutedEventArgs e)
+		{
+			_gameSessionViewModel.MoveSouth();
+		}
+
+		private void WestButton_Click(object sender, RoutedEventArgs e)
+		{
+			_gameSessionViewModel.MoveWest();
+		}
+		private void EastButton_Click(object sender, RoutedEventArgs e)
+		{
+			_gameSessionViewModel.MoveEast();
+		}
 	}
 }
