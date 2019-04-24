@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WpfTBQuestGame.S2", "WpfTBQ
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WpfTBQuestGame.S3", "WpfTBQuestGame.S3\WpfTBQuestGame.S3.csproj", "{FFE6E255-0BA1-4429-95DC-4F0024B7075C}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WpfTBQuestGame.S4", "WpfTBQuestGame.S4\WpfTBQuestGame.S4.csproj", "{79391544-8F44-4082-BCBB-DF4BA3D1EB18}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{FFE6E255-0BA1-4429-95DC-4F0024B7075C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FFE6E255-0BA1-4429-95DC-4F0024B7075C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FFE6E255-0BA1-4429-95DC-4F0024B7075C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{79391544-8F44-4082-BCBB-DF4BA3D1EB18}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{79391544-8F44-4082-BCBB-DF4BA3D1EB18}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{79391544-8F44-4082-BCBB-DF4BA3D1EB18}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{79391544-8F44-4082-BCBB-DF4BA3D1EB18}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

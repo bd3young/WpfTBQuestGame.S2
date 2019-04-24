@@ -4,7 +4,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{FFE6E255-0BA1-4429-95DC-4F0024B7075C}</ProjectGuid>
+    <ProjectGuid>{79391544-8F44-4082-BCBB-DF4BA3D1EB18}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <RootNamespace>WpfTBQuestGame.S2</RootNamespace>
     <AssemblyName>WpfTBQuestGame.S2</AssemblyName>
@@ -80,13 +80,19 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Models\Character.cs" />
+    <Compile Include="Models\Citizen.cs" />
     <Compile Include="Models\Food.cs" />
     <Compile Include="Models\GameItem.cs" />
     <Compile Include="Models\GameMapLocation.cs" />
+    <Compile Include="Models\IRecruit.cs" />
+    <Compile Include="Models\IReward.cs" />
+    <Compile Include="Models\ISpeak.cs" />
     <Compile Include="Models\Location.cs" />
     <Compile Include="Models\Map.cs" />
+    <Compile Include="Models\Npc.cs" />
     <Compile Include="Models\Player.cs" />
     <Compile Include="Models\Ship.cs" />
+    <Compile Include="Models\Shrine.cs" />
     <Compile Include="Models\Treasure.cs" />
     <Compile Include="ObservableObject.cs" />
     <Compile Include="PresentationLayer\GameSessionView.xaml.cs">

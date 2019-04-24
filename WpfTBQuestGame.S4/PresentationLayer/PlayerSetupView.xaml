@@ -5,41 +5,65 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfTBQuestGame.S2.PresentationLayer"
         mc:Ignorable="d"
-        Title="" Height="450" Width="400" Background="SaddleBrown">
+        Title="" Height="730" Width="600" Background="SaddleBrown">
     <Window.Resources>
         <ControlTemplate TargetType="Button" x:Key="ImageButton">
-            <Image Source="PirateShip2.jpg"
+            
+           <Image Source="PirateShip2.jpg"
                    x:Name="image"
                    Height="{TemplateBinding Height}"
                    Width="{TemplateBinding Width}"/>
         </ControlTemplate>
+        <Style x:Key="PirateButton" TargetType="Button">
+            <Setter Property="Background">
+                <Setter.Value>
+                    <ImageBrush ImageSource="../Assets/PirateShip2.jpg" Stretch="Fill"/>
+                </Setter.Value>
+            </Setter>
+        </Style>
         <Style x:Key="MainPanelButtonStyle" TargetType="Button">
-            <Setter Property="Width" Value="80"/>
-            <Setter Property="Height" Value="20"/>
+            <Setter Property="Width" Value="100"/>
+            <Setter Property="Height" Value="50"/>
+            <Setter Property="Margin" Value="5"/>
+            <Setter Property="FontSize" Value="30"/>
         </Style>
         <Style x:Key="MainPanelTextBoxStyle" TargetType="TextBox">
-            <Setter Property="Width" Value="100"/>
-            <Setter Property="Height" Value="20"/>
+            <Setter Property="Width" Value="150"/>
+            <Setter Property="Height" Value="40"/>
+            <Setter Property="Margin" Value="5"/>
+            <Setter Property="FontSize" Value="25"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
         </Style>
         <Style x:Key="MainPanelComboBoxStyle" TargetType="ComboBox">
-            <Setter Property="Width" Value="100"/>
-            <Setter Property="Height" Value="20"/>
+            <Setter Property="Width" Value="150"/>
+            <Setter Property="Height" Value="40"/>
+            <Setter Property="Margin" Value="5"/>
+            <Setter Property="FontSize" Value="25"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+        </Style>
+        <Style x:Key="MainPanelLabelStyle" TargetType="Label">
+            <Setter Property="Height" Value="40"/>
+            <Setter Property="Margin" Value="5"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="FontSize" Value="20"/>
         </Style>
     </Window.Resources>
     <Grid>
         <StackPanel
             Grid.Column="0"
             Orientation="Vertical"
-            HorizontalAlignment="Center">
+            HorizontalAlignment="Center"
+            >
             <Label
                     Content="Player Setup" 
                     HorizontalAlignment="Center"
                     Margin="20"
-                    FontSize="20"/>
+                    FontSize="30"/>
             <StackPanel
                 Orientation="Horizontal"
                 HorizontalAlignment="Right">
-                <Label Content="Name"/>
+                <Label Content="Name"
+                       Style="{StaticResource MainPanelLabelStyle}"/>
                 <TextBox 
                     Name="NameTextBox" 
                     Style="{StaticResource MainPanelTextBoxStyle}"/>
@@ -47,7 +71,8 @@
             <StackPanel
                 Orientation="Horizontal"
                 HorizontalAlignment="Right">
-                <Label Content="Race"/>
+                <Label Content="Race"
+                       Style="{StaticResource MainPanelLabelStyle}"/>
                 <ComboBox 
                     Name="RaceComboBox"
                     SelectedIndex="0"
@@ -56,7 +81,8 @@
             <StackPanel
                 Orientation="Horizontal"
                 HorizontalAlignment="Right">
-                <Label Content="Age"/>
+                <Label Content="Age"
+                       Style="{StaticResource MainPanelLabelStyle}"/>
                 <TextBox 
                     Name="AgeTextBox" 
                     Style="{StaticResource MainPanelTextBoxStyle}"/>
@@ -64,7 +90,8 @@
             <StackPanel
                 Orientation="Horizontal"
                 HorizontalAlignment="Right">
-                <Label Content="Job Title"/>
+                <Label Content="Job Title"
+                       Style="{StaticResource MainPanelLabelStyle}"/>
                 <ComboBox 
                     Name="JobTitleComboBox"
                     SelectedIndex="0"
@@ -81,9 +108,10 @@
                     Background="WhiteSmoke"
                     Foreground="Red"/>
             <StackPanel>
-            <Button Template="{StaticResource ImageButton}"
-                    Margin="5"
-                    Width="200">
+            <Button Style="{StaticResource PirateButton}"
+                    Margin="0,20,0,0"
+                    Width="300"
+                    Height="250">
                 <Button.Triggers>
                     <EventTrigger RoutedEvent="Button.Click">
                         <BeginStoryboard>
