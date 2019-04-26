@@ -9,7 +9,5 @@ namespace WpfTBQuestGame.S2.Models
     public interface IReward
     {
         List<GameItem> GameItemsNeeded();
-
-		bool WillReward(List<GameItem> locationGameItems);
 	}
 }

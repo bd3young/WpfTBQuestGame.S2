@@ -52,6 +52,10 @@ namespace WpfTBQuestGame.S2.PresentationLayer
             {
                 _gameSessionViewModel.AddItemToInventory();
             }
+            else
+            {
+                _gameSessionViewModel.UnableToPickUp();
+            }
         }
 
         private void PutDownButton_Click(object sender, RoutedEventArgs e)
@@ -59,6 +63,10 @@ namespace WpfTBQuestGame.S2.PresentationLayer
             if (InventoryDataGrid.SelectedItem != null)
             {
                 _gameSessionViewModel.RemoveItemFromInventory();
+            }
+            else
+            {
+                _gameSessionViewModel.UnableToPutDown();
             }
         }
 
@@ -68,6 +76,10 @@ namespace WpfTBQuestGame.S2.PresentationLayer
             {
                 _gameSessionViewModel.OnUseGameItem();
             }
+            else
+            {
+                _gameSessionViewModel.UnableToUse();
+            }
         }
 
         private void TalkToButton_Click(object sender, RoutedEventArgs e)
@@ -76,11 +88,14 @@ namespace WpfTBQuestGame.S2.PresentationLayer
             {
                 _gameSessionViewModel.OnPlayerTalkTo();
             }
+            else
+            {
+                _gameSessionViewModel.UnableToTalkTo();
+            }
             if (LocationShrinesDataGrid.SelectedItem != null)
             {
                 _gameSessionViewModel.OnShrineTalkTo();
             }
-
         }
 
         private void RecruitButton_Click(object sender, RoutedEventArgs e)
@@ -89,8 +104,11 @@ namespace WpfTBQuestGame.S2.PresentationLayer
             {
                 _gameSessionViewModel.OnPlayerRecruit();
             }
-            
-            
+            else
+            {
+                _gameSessionViewModel.UnableToRecruit();
+            }
+
         }
 
         private void InteractButton_Click(object sender, RoutedEventArgs e)
@@ -98,6 +116,10 @@ namespace WpfTBQuestGame.S2.PresentationLayer
             if (LocationShrinesDataGrid.SelectedItem != null)
             {
                 _gameSessionViewModel.OnInteractWithShrine();
+            }
+            else
+            {
+                _gameSessionViewModel.UnableToInteract();
             }
         }
     }

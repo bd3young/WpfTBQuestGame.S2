@@ -16,12 +16,6 @@ namespace WpfTBQuestGame.S2.Models
         private List<GameItem> _standardGameItems;
         private List<Npc> _standardNpcs;
 
-
-
-
-
-
-
         #endregion
 
         #region PROPERTIES

@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using WpfTBQuestGame.S2.Models;
 using System.Collections.ObjectModel;
 using WpfTBQuestGame.S2.DataLayer;
+using System.Windows;
 
 namespace WpfTBQuestGame.S2.PresentationLayer
 {
@@ -244,6 +245,12 @@ namespace WpfTBQuestGame.S2.PresentationLayer
             {
                 _player.Lives = _player.Lives - 1;
                 _player.Health = _player.Health + 100;
+                CurrentLocationInformation = "The curse has consumed part of your soul. You lose a life.";
+            }
+            if (_player.Lives <= 0)
+            {
+                CurrentLocationInformation = "The curse has consumed your soul. You colapse to the ground.";
+                OnPlayerDies("You have been consumed by the curse.");
             }
 		}
 
@@ -298,15 +305,8 @@ namespace WpfTBQuestGame.S2.PresentationLayer
 
         public void AddItemToInventory()
         {
-            //
-            // confirm a game item selected and is in current location
-            // subtract from location and add to inventory
-            //
             if (_currentGameItem != null && _currentLocation.GameItems.Contains(_currentGameItem))
             {
-                //
-                // cast selected game item 
-                //
                 GameItem selectedGameItem = _currentGameItem as GameItem;
 
                 _currentLocation.RemoveGameItemFromLocation(selectedGameItem);
@@ -367,10 +367,11 @@ namespace WpfTBQuestGame.S2.PresentationLayer
             }
         }
 
-        private void ProcessFoodUse(Food food)
+        private void ProcessFoodUse(Food currentFood)
         {
-            _player.Health += food.HealthChange;
+            _player.Health += currentFood.HealthChange;
             _player.RemoveGameItemFromInventory(_currentGameItem);
+            CurrentLocationInformation = currentFood.UseMessage;
         }
 
         private void ProcessShipUse(Ship currentShip)
@@ -441,47 +442,123 @@ namespace WpfTBQuestGame.S2.PresentationLayer
             }
         }
 
-        //Fix This null problem
         public void OnInteractWithShrine()
         {
-            if (CurrentShrine != null && CurrentShrine is IReward)
+            if (CurrentShrine != null)
             {
-                List<GameItem> LocationGameItems = CurrentLocation.GameItems.ToList();
+				List<GameItem> itemsNeededForShrine = GameData.ItemsNeededForShrine();
+                List<GameItem> locationGameItems = CurrentLocation.GameItems.ToList();
 
-                IReward gameMapLocationItems = CurrentLocation.GameItems.ToList() as IReward;
-                if (gameMapLocationItems != null)
-                {
-                    if (gameMapLocationItems.WillReward(LocationGameItems))
+                int ItemCount = 0;
+				foreach (GameItem gameItem in itemsNeededForShrine)
+				{
+                    foreach (GameItem locationGameItem in locationGameItems)
                     {
-                        GiveTreasure();
+                        if (gameItem.Id == locationGameItem.Id)
+                        {
+                            ItemCount ++;
+                        }
                     }
-                    else
+				}
+
+				if (ItemCount == 5)
+				{
+					GiveTreasure(CurrentShrine);
+                    CurrentLocationInformation = "You have recieved a chest that contains enough gold to live 1000 life times.";
+                    OnPlayerWins("You have completed the game.");
+				}
+				else
+				{
+					CurrentLocationInformation = "The shrine is not pleased with your offering and consumes a part of your life";
+                    _player.Health = _player.Health - 10;
+                    if (_player.Health <= 0)
                     {
-                        CurrentLocationInformation = "Your tribute does not please.";
+                        _player.Lives = _player.Lives - 1;
+                        _player.Health = _player.Health + 100;
+                    }
+                    if (_player.Lives <= 0)
+                    {
+                        CurrentLocationInformation = "The curse has consumed your soul. You colapse to the ground.";
+                        OnPlayerDies("You have been consumed by the curse.");
                     }
                 }
 
-            }
+			}
         }
 
-        private void GiveTreasure()
+        private void GiveTreasure(Shrine CurrentShrine)
         {
-            throw new NotImplementedException();
+            _player.AddShrineTreasureToInventory(CurrentShrine);
+        }
+
+        private void QuiteApplication()
+        {
+            Environment.Exit(0);
+        }
+
+        private void OnPlayerDies(string message)
+        {
+            string messagetext = message +
+                "\n\nThank you for playing.";
+            
+            string titleText = "Death";
+            MessageBoxButton button = MessageBoxButton.OK;
+            MessageBoxResult result = MessageBox.Show(messagetext, titleText, button);
+            QuiteApplication();
+        }
+
+        private void OnPlayerWins(string message)
+        {
+            string messagetext = message +
+                "\n\nThank you for playing";
+
+            string titleText = "Congratulations";
+            MessageBoxButton button = MessageBoxButton.OK;
+            MessageBoxResult result = MessageBox.Show(messagetext, titleText, button);
+            QuiteApplication();
         }
 
         #endregion
 
         #region HELPER METHODS
 
-        private int DieRoll(int sides)
+        public int DieRoll(int sides)
 		{
 			return random.Next(1, sides + 1);
 		}
 
+		public void UnableToUse()
+		{
+			CurrentLocationInformation = "Cannot Use Selected Item.";
+		}
 
+		public void UnableToRecruit()
+		{
+			CurrentLocationInformation = "Cannot Recruit Selected Item.";
+		}
 
-        #endregion
+		public void UnableToPickUp()
+		{
+			CurrentLocationInformation = "Cannot Pick Up Selected Item.";
+		}
 
-        #endregion
-    }
+		public void UnableToInteract()
+		{
+			CurrentLocationInformation = "Cannot Interact with Selected Item.";
+		}
+
+		public void UnableToTalkTo()
+		{
+			CurrentLocationInformation = "Cannot Talk To with Selected Item.";
+		}
+
+		public void UnableToPutDown()
+		{
+			CurrentLocationInformation = "Cannot Put Down Selected Item.";
+		}
+
+		#endregion
+
+		#endregion
+	}
 }

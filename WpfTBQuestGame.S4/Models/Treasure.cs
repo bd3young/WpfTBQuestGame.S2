@@ -25,7 +25,7 @@ namespace WpfTBQuestGame.S2.Models
 
 		public override string InformationString()
 		{
-			return $"{Name}: {Description}";
+			return $"{Name}: {Description}\nType: {Type}";
 		}
 	}
 }

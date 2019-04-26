@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -67,14 +68,6 @@ namespace WpfTBQuestGame.S2.PresentationLayer
                 //
                 _player.JobTitle = jobTitle;
                 _player.Race = race;
-                _player.Inventory = new System.Collections.ObjectModel.ObservableCollection<GameItem>
-                {
-                    //_player.Inventory.Add(Ship)
-                };
-                _player.Crew = new System.Collections.ObjectModel.ObservableCollection<Npc>
-                {
-
-                };
 
                 Visibility = Visibility.Hidden;
             }

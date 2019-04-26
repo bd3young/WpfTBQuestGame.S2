@@ -6,12 +6,13 @@ using System.Threading.Tasks;
 using WpfTBQuestGame.S2.Models;
 using WpfTBQuestGame.S2.DataLayer;
 using WpfTBQuestGame.S2.PresentationLayer;
+using System.Collections.ObjectModel;
 
 namespace WpfTBQuestGame.S2.BusinessLayer
 {
     public class GameBusiness
     {
-        bool _newPlayer = false;
+        bool _newPlayer = true;
 
         GameSessionViewModel _gameSessionViewModel;
         Player _player = new Player();
@@ -26,7 +27,7 @@ namespace WpfTBQuestGame.S2.BusinessLayer
             InstantiateAndShowView();
         }
 
-        private void SetupPlayer()
+        public void SetupPlayer()
         {
             if (_newPlayer)
             {
@@ -39,6 +40,12 @@ namespace WpfTBQuestGame.S2.BusinessLayer
                 _player.Exp = 0;
                 _player.Health = 100;
                 _player.Lives = 3;
+
+				_player.Inventory = new ObservableCollection<GameItem>(GameData.DefaultInventoryGameItems());
+                _player.Crew = new ObservableCollection<Npc>()
+                {
+
+                };
             }
             else
             {
@@ -62,22 +69,8 @@ namespace WpfTBQuestGame.S2.BusinessLayer
             {
                 _player = GameData.PlayerData();
             }
-            //if (_newPlayer)
-            //{
-            //    _player =
-            //    new Player()
-            //    {
-            //        Inventory = new System.Collections.ObjectModel.ObservableCollection<GameItem>
-            //        {
-                        
-            //        },
-            //        Crew = new System.Collections.ObjectModel.ObservableCollection<Npc>
-            //        {
-            //        }
-            //    };
-            //}
-            
-            _messages = GameData.InitialMessages();
+
+			_messages = GameData.InitialMessages();
 
         }
     }

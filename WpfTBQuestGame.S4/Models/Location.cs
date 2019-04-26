@@ -22,8 +22,6 @@ namespace WpfTBQuestGame.S2.Models
         private ObservableCollection<GameItem> _gameItems;
         private ObservableCollection<Npc> _citizens;
 
-
-
         private int _requiredShipId;
 
 		private ObservableCollection<Npc> _npcs;

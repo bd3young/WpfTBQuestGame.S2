@@ -18,14 +18,7 @@ namespace WpfTBQuestGame.S2.Models
 
 		public override string InformationString()
 		{
-			if (HealthChange != 0)
-			{
 				return $"{Name}: {Description}\nHealth: {HealthChange}";
-			}
-			else
-			{
-				return $"{Name}: {Description}";
-			}
 		}
 	}
 }

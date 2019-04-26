@@ -29,16 +29,7 @@ namespace WpfTBQuestGame.S2.Models
         protected RaceType _race;
 		protected Random random = new Random();
 
-		public Character()
-		{
-		}
 
-		public Character(int id, string name, RaceType race)
-		{
-			Id = id;
-			Name = name;
-			Race = race;
-		}
 
 		#endregion
 
@@ -77,6 +68,17 @@ namespace WpfTBQuestGame.S2.Models
         #endregion
 
         #region METHODS
+
+		public Character()
+		{
+		}
+
+		public Character(int id, string name, RaceType race)
+		{
+			Id = id;
+			Name = name;
+			Race = race;
+		}
 
         #endregion
 

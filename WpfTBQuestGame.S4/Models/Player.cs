@@ -176,9 +176,18 @@ namespace WpfTBQuestGame.S2.Models
 
         public void AddNpcsToCrew(Npc SelectedNpc)
         {
-            if (SelectedNpc != null && SelectedNpc != null)
+            if (SelectedNpc != null)
             {
                 _crew.Add(SelectedNpc);
+            }
+        }
+
+        public void AddShrineTreasureToInventory(Shrine CurrentShrine)
+        {
+            if (CurrentShrine != null)
+            {
+                _inventory.Add(CurrentShrine.CurrentTreasure);
+                
             }
         }
 
